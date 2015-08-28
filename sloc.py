@@ -62,7 +62,7 @@ def analize_path(path, mask, summary):
             filepath = os.path.join(root, filename)
             sloc = get_file_sloc(filepath)
             if not summary:
-                print '%s [%s]' % (filepath, sloc)
+                print '{0:<80} [{1:>4}]'.format(filepath, sloc)
             if sloc > 0:
                 matches.append(sloc)
     print 'Total size = %s' % sum(matches)

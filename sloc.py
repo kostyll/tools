@@ -66,12 +66,16 @@ def analize_path(path, mask, summary):
             if sloc > 0:
                 matches.append(sloc)
     print 'Total size = %s' % sum(matches)
+    return sum(matches)
 
 
 def main():
     parser = make_arg_parser()
     args = parse_args(parser, os.sys.argv[1:])
-    analize_path(args.dir, args.mask, args.summary)
+    general = 0
+    for path in args.dir.split('|'):
+        general += analize_path(path, args.mask, args.summary)
+    print "General = %s" % general
 
 
 if __name__ == "__main__":
